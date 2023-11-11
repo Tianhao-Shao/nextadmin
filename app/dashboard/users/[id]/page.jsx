@@ -1,14 +1,11 @@
-// import { updateUser } from "@/app/lib/actions";
-// import { fetchUser } from "@/app/lib/data";
+import { updateUser } from "@/app/lib/actions";
+import { fetchUser } from "@/app/lib/data";
 import styles from "@/app/ui/dashboard/users/singleUser/singleUser.module.css";
 import Image from "next/image";
 
 const SingleUserPage = async ({ params }) => {
 	const { id } = params;
-	//   const user = await fetchUser(id);
-	const user = {
-		username: "Tianhao Shao",
-	};
+	const user = await fetchUser(id);
 
 	return (
 		<div className={styles.container}>
@@ -19,9 +16,7 @@ const SingleUserPage = async ({ params }) => {
 				{user.username}
 			</div>
 			<div className={styles.formContainer}>
-				<form
-					// action={updateUser}
-					className={styles.form}>
+				<form action={updateUser} className={styles.form}>
 					<input type="hidden" name="id" value={user.id} />
 					<label>Username</label>
 					<input
@@ -42,7 +37,7 @@ const SingleUserPage = async ({ params }) => {
 						placeholder={user.address}
 					/>
 					<label>Is Admin?</label>
-					<select name="isAdmin" id="isAdmin">
+					<select name="isAdmin" id="isAdmin" defaultValue={false}>
 						<option value={true} selected={user.isAdmin}>
 							Yes
 						</option>
@@ -51,7 +46,7 @@ const SingleUserPage = async ({ params }) => {
 						</option>
 					</select>
 					<label>Is Active?</label>
-					<select name="isActive" id="isActive">
+					<select name="isActive" id="isActive" defaultValue={true}>
 						<option value={true} selected={user.isActive}>
 							Yes
 						</option>

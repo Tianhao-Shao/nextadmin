@@ -18,28 +18,17 @@ export const fetchUsers = async (q, page) => {
     throw new Error("Failed to fetch users!");
   }
 };
-export const fetchUser = async () => {
+export const fetchUser = async (id) => {
+  console.log(id);
   try {
     connectToDB();
-    const users = await User.find();
-    return users;
+    const user = await User.findById(id);
+    return user;
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch user!");
   }
 };
-
-// export const fetchUser = async (id) => {
-//   console.log(id);
-//   try {
-//     connectToDB();
-//     const user = await User.findById(id);
-//     return user;
-//   } catch (err) {
-//     console.log(err);
-//     throw new Error("Failed to fetch user!");
-//   }
-// };
 
 export const fetchProducts = async (q, page) => {
   console.log(q);

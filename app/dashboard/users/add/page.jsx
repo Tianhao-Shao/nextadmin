@@ -1,11 +1,11 @@
-// import { addUser } from "@/app/lib/actions";
+import { addUser } from "@/app/lib/actions";
 import styles from "@/app/ui/dashboard/users/addUser/addUser.module.css";
 
 const AddUserPage = () => {
 	return (
 		<div className={styles.container}>
 			<form
-				// action={addUser}
+				action={addUser}
 				className={styles.form}>
 				<input
 					type="text"
