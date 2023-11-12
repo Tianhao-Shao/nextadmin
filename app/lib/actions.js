@@ -156,11 +156,16 @@ export const deleteProduct = async (formData) => {
 
 export const authenticate = async (prevState, formData) => {
   const { username, password } = Object.fromEntries(formData);
+  
+  await signIn("credentials", { username, password });
 
-  try {
-    await signIn("credentials", { username, password });
-  } catch (err) {
-    console.log(err);
-    return "Wrong Credentials!";
-  }
+  //TODO: if add try catch, it will not redirect to dashboard
+  
+  // try {
+  //   await signIn("credentials", { username, password });
+  // } 
+  // catch (err) {
+  //   console.log(err);
+  //   return "Wrong Credentials!";
+  // }
 };
